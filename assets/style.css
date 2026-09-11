@@ -353,10 +353,6 @@ body {
     overflow: auto;
   }
 
-  /* =========================
-     GAME
-  ========================= */
-
   .game {
     width: 100%;
     min-height: 100vh;
@@ -366,19 +362,11 @@ body {
     padding: 20px;
   }
 
-  /* =========================
-     WHEEL
-  ========================= */
-
   .wheel {
     width: min(55vw, 450px);
     height: min(55vw, 450px);
     margin: 20px auto;
   }
-
-  /* =========================
-     ARROW
-  ========================= */
 
   .arrow {
     right: -50px;
@@ -387,19 +375,11 @@ body {
     font-size: 45px;
   }
 
-  /* =========================
-     SECTOR
-  ========================= */
-
   .sector span {
     padding-left: 35px;
     padding-right: 10px;
     font-size: 16px;
   }
-
-  /* =========================
-     BUTTON
-  ========================= */
 
   .buttons {
     width: 100%;
@@ -413,10 +393,6 @@ body {
     height: 42px;
     font-size: 18px;
   }
-
-  /* =========================
-     QUESTION BOX
-  ========================= */
 
   .question-box {
     width: min(80%, 600px);
@@ -440,19 +416,11 @@ body {
     font-size: 20px;
   }
 
-  /* =========================
-     NARATION
-  ========================= */
-
   .narationBtn {
     width: 250px;
     padding: 9px;
     font-size: 16px;
   }
-
-  /* =========================
-     HALAMAN MUKA
-  ========================= */
 
   .halaman-muka .menuTitle {
     font-size: 40px;
@@ -481,10 +449,6 @@ body {
     margin-top: 40px;
   }
 
-  /* =========================
-     CONTENT
-  ========================= */
-
   .materi-pembelajaran,
   .tujuan-pembelajaran,
   .cara-permainan,
@@ -497,10 +461,6 @@ body {
   .cara-permainan h2 {
     font-size: 25px;
   }
-
-  /* =========================
-     BACK BUTTON
-  ========================= */
 
   .backBtn {
     right: 30px;
@@ -568,7 +528,6 @@ body {
     margin-top: 10px;
     font-size: 16px;
     color: #555;
-    /* min-height: 15px; */
   }
 
   #correct-answer {
@@ -655,8 +614,7 @@ body {
   }
 
   .question-box {
-    margin-bottom: 20px;
-    margin-top: 40px;
-    width: 350px;
+    margin-top: 50px;
+    width: 90%;
   }
 }
