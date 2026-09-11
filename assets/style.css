@@ -240,6 +240,7 @@ body {
   cursor: pointer;
   width: 300px;
   transition: 0.2s;
+  color: blue;
 }
 .halaman-muka .materiPembelajaranBtn:hover,
 .halaman-muka .tujuanPembelajaranBtn:hover,
@@ -324,6 +325,11 @@ body {
 
 .tentangGimBtn a {
   text-decoration: none;
+  color: blue;
+}
+
+.tentangGimBtn a:hover {
+  color: fuchsia;
 }
 
 .backBtn {
