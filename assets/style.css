@@ -1,0 +1,656 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  /* background: #f5f5f5; */
+  background-color: beige;
+}
+
+/* =========================
+         GAME AREA
+      ========================= */
+
+.game {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  margin: 10px auto;
+  position: relative;
+  background-color: black;
+  border: 8px solid red;
+}
+
+.rotateWheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sector {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 0;
+  transform: rotate(calc(var(--i) * 30deg));
+  clip-path: polygon(0 0, 100% 50%, 96% 0);
+}
+
+.sector span {
+  padding-left: 50px;
+  padding-right: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  text-align: right;
+}
+
+/* =========================
+         ARROW
+      ========================= */
+
+.arrow {
+  position: absolute;
+  right: -130px;
+  top: 225px;
+  font-size: 55px;
+  z-index: 10;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+/* =========================
+         BUTTON
+      ========================= */
+
+.buttons {
+  width: 300px;
+  display: flex;
+  margin: 40px auto;
+  justify-content: center;
+  gap: 40px;
+}
+
+.start,
+.stop {
+  width: 110px;
+  height: 45px;
+  color: white;
+  border: 2px solid black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 20px;
+  user-select: none;
+}
+
+.start {
+  background-color: green;
+}
+
+.stop {
+  background-color: crimson;
+}
+
+.start:hover,
+.stop:hover {
+  transform: scale(1.05);
+}
+
+.start:active,
+.stop:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+         QUESTION BOX
+      ========================= */
+
+.question-box {
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* display: none; */
+}
+
+.question-box h3 {
+  margin-bottom: 10px;
+  color: #555;
+  display: none;
+}
+
+#question {
+  font-size: 25px;
+  font-weight: bold;
+  color: #222;
+  min-height: 35px;
+}
+
+#status {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 25px;
+}
+
+#answer {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+  min-height: 25px;
+}
+#correct-answer {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #555;
+  min-height: 25px;
+}
+
+.narationBtn {
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: blue;
+  color: #f5f5f5;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#icon {
+  width: 100%;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 8px;
+}
+
+/* halaman muka */
+
+.halaman-muka {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.halaman-muka .menuTitle {
+  font-size: 50px;
+}
+
+.halaman-muka .menu-wrapper {
+  width: 50%;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px 0;
+  align-items: center;
+}
+
+.halaman-muka .materiPembelajaranBtn,
+.halaman-muka .tujuanPembelajaranBtn,
+.halaman-muka .caraPermainanBtn,
+.halaman-muka .tentangGimBtn {
+  height: 50px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: greenyellow;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 300px;
+  transition: 0.2s;
+}
+.halaman-muka .materiPembelajaranBtn:hover,
+.halaman-muka .tujuanPembelajaranBtn:hover,
+.halaman-muka .caraPermainanBtn:hover,
+.halaman-muka .tentangGimBtn:hover {
+  background-color: aqua;
+  transform: scale(1.03);
+  color: fuchsia;
+}
+
+.halaman-muka .mulaiBtn {
+  width: 200px;
+  height: 50px;
+  background-color: royalblue;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  color: #f5f5f5;
+  display: flex;
+  cursor: pointer;
+  margin-top: 100px;
+  transition: 0.2s;
+}
+
+.halaman-muka .mulaiBtn:hover {
+  background-color: blue;
+  transform: scale(1.04);
+  color: whitesmoke;
+}
+
+.materi-pembelajaran {
+  position: relative;
+  width: 70%;
+  display: flex;
+  margin: auto;
+  display: none;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.tujuan-pembelajaran {
+  position: relative;
+  width: 60%;
+  display: flex;
+  display: none;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  color: #555;
+}
+
+.tujuan-pembelajaran li {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.tujuan-pembelajaran p {
+  margin-top: 10px;
+  font-weight: lighter;
+}
+
+.cara-permainan {
+  position: relative;
+  width: 60%;
+  display: flex;
+  margin: auto;
+  display: none;
+  margin-top: 30px;
+}
+
+.cara-permainan li {
+  margin-top: 10px;
+}
+
+.tentang-gim {
+  position: relative;
+  width: 70%;
+  display: flex;
+  margin: 30px auto;
+  display: none;
+}
+
+.tentangGimBtn a {
+  text-decoration: none;
+}
+
+.backBtn {
+  position: fixed;
+  right: 140px;
+  bottom: 70px;
+  padding: 8px 15px;
+  border-radius: 10px;
+  background-color: greenyellow;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE TABLET
+   561px - 1024px
+========================= */
+
+@media (min-width: 561px) and (max-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
+  /* =========================
+     GAME
+  ========================= */
+
+  .game {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  /* =========================
+     WHEEL
+  ========================= */
+
+  .wheel {
+    width: min(55vw, 450px);
+    height: min(55vw, 450px);
+    margin: 20px auto;
+  }
+
+  /* =========================
+     ARROW
+  ========================= */
+
+  .arrow {
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 45px;
+  }
+
+  /* =========================
+     SECTOR
+  ========================= */
+
+  .sector span {
+    padding-left: 35px;
+    padding-right: 10px;
+    font-size: 16px;
+  }
+
+  /* =========================
+     BUTTON
+  ========================= */
+
+  .buttons {
+    width: 100%;
+    margin: 20px auto;
+    gap: 30px;
+  }
+
+  .start,
+  .stop {
+    width: 100px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  /* =========================
+     QUESTION BOX
+  ========================= */
+
+  .question-box {
+    width: min(80%, 600px);
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  #question {
+    font-size: 23px;
+  }
+
+  #status {
+    font-size: 17px;
+  }
+
+  #answer {
+    font-size: 17px;
+  }
+
+  #correct-answer {
+    font-size: 20px;
+  }
+
+  /* =========================
+     NARATION
+  ========================= */
+
+  .narationBtn {
+    width: 250px;
+    padding: 9px;
+    font-size: 16px;
+  }
+
+  /* =========================
+     HALAMAN MUKA
+  ========================= */
+
+  .halaman-muka .menuTitle {
+    font-size: 40px;
+    width: 80%;
+  }
+
+  .halaman-muka .menu-wrapper {
+    width: 70%;
+    height: auto;
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .halaman-muka .materiPembelajaranBtn,
+  .halaman-muka .tujuanPembelajaranBtn,
+  .halaman-muka .caraPermainanBtn,
+  .halaman-muka .tentangGimBtn {
+    width: 45%;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .halaman-muka .mulaiBtn {
+    width: 180px;
+    height: 48px;
+    margin-top: 40px;
+  }
+
+  /* =========================
+     CONTENT
+  ========================= */
+
+  .materi-pembelajaran,
+  .tujuan-pembelajaran,
+  .cara-permainan,
+  .tentang-gim {
+    width: 80%;
+  }
+
+  .materi-pembelajaran h2,
+  .tujuan-pembelajaran h2,
+  .cara-permainan h2 {
+    font-size: 25px;
+  }
+
+  /* =========================
+     BACK BUTTON
+  ========================= */
+
+  .backBtn {
+    right: 30px;
+    bottom: 30px;
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+}
+
+/* tampilan gadget */
+@media (max-width: 568px) {
+  body {
+    overflow: auto;
+    font-family: Arial, sans-serif;
+  }
+  .game {
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .wheel {
+    width: 90vw;
+    height: 90vw;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .question-box #question {
+    font-size: 20px;
+  }
+
+  .arrow {
+    right: -20px;
+    font-size: 20px;
+    top: 170px;
+  }
+
+  .sector span {
+    font-size: 10px;
+  }
+
+  .start,
+  .stop {
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    margin-top: -20px;
+    border-radius: 6px;
+  }
+
+  .narationBtn {
+    width: 200px;
+    padding: 7px;
+    font-size: 14px;
+  }
+
+  .sector span {
+    padding-left: 40px;
+    padding-right: 10px;
+    font-size: 13px;
+  }
+
+  #answer {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+    /* min-height: 15px; */
+  }
+
+  #correct-answer {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  #status {
+    margin-top: 8px;
+  }
+
+  #icon {
+    font-size: 15px;
+  }
+
+  #question {
+    font-size: 22px;
+  }
+
+  .backBtn {
+    font-size: 12px;
+    padding: 2px 5px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .halaman-muka .menu-wrapper {
+    width: 80%;
+  }
+
+  .halaman-muka .materiPembelajaranBtn,
+  .halaman-muka .tujuanPembelajaranBtn,
+  .halaman-muka .caraPermainanBtn,
+  .halaman-muka .profilPengembangBtn {
+    padding: 5px 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .halaman-muka .materiPembelajaranBtn:hover,
+  .halaman-muka .tujuanPembelajaranBtn:hover,
+  .halaman-muka .caraPermainanBtn:hover,
+  .halaman-muka .profilPengembangBtn:hover {
+    background-color: aqua;
+    transform: scale(1.03);
+  }
+
+  .halaman-muka .menuTitle {
+    width: 80%;
+    font-size: 30px;
+    /* font-weight: bold; */
+  }
+
+  .halaman-muka .menu-wrapper {
+    gap: 15px;
+  }
+  .halaman-muka .mulaiBtn {
+    margin-top: 30px;
+  }
+
+  .halaman-muka .tujuan-pembelajaran {
+    font-size: 15px;
+    font-weight: lighter;
+    color: #555;
+  }
+
+  .materi-pembelajaran h2,
+  .tujuan-pembelajaran h2,
+  .cara-permainan h2 {
+    font-size: 20px;
+  }
+
+  .cara-permainan,
+  .materi-pembelajaran,
+  .tujuan-pembelajaran {
+    width: 80%;
+  }
+
+  .question-box {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    width: 350px;
+  }
+}
