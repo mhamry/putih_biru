@@ -534,9 +534,9 @@ caraPermainanBtn.addEventListener("click", function () {
   narationBtn.style.display = "none";
 });
 
-tentangGimBtn.addEventListener("click", function () {
-  window.location.href = "assets/tentang_gim.pdf";
-});
+// tentangGimBtn.addEventListener("click", function () {
+//   window.location.href = "assets/tentang_gim.pdf";
+// });
 
 backBtns.forEach((backBtns) => {
   backBtns.addEventListener("click", function () {
